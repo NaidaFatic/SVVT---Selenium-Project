@@ -95,5 +95,72 @@ class TestProjectLunatik {
 		String urlWishlist = webDriver.getCurrentUrl();
 		assertEquals(baseUrl+"pages/wishlist-1", urlWishlist);
 	}
+	
+	@Test
+	void testCollectionsOnHomepage() throws InterruptedException {
+		webDriver.get(baseUrl);
+		
+		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofMillis(3));
+		
+		String title = webDriver.getTitle();
+		assertEquals("Lunatik - Wear what you love", title);
+		
+		WebElement kosuljeIBluze = webDriver.findElement(By.xpath("//*[@id=\"shopify-section-16170889646a137eeb\"]/div/div/div[2]/div/div[1]/a/div[2]/div"));
+		Actions actions = new Actions(webDriver);
+		actions.moveToElement(kosuljeIBluze);
+		actions.perform();
+		Thread.sleep(5000);
+		assertEquals("KOŠULJE I BLUZE", kosuljeIBluze.getAttribute("innerText"));
+		
+		kosuljeIBluze.click();
+		Thread.sleep(5000);
+		String currentUrl = webDriver.getCurrentUrl();
+		assertEquals(baseUrl + "collections/ko-ulje", currentUrl);
+		webDriver.navigate().back();
+		Thread.sleep(5000);
+		
+		WebElement MajiceITopovi = webDriver.findElement(By.xpath("//*[@id=\"shopify-section-16170889646a137eeb\"]/div/div/div[2]/div/div[2]/a/div[2]/div"));
+		assertEquals("MAJICE I TOPOVI", MajiceITopovi.getAttribute("innerText"));
+		MajiceITopovi.click();
+		Thread.sleep(5000);
+		currentUrl = webDriver.getCurrentUrl();
+		assertEquals(baseUrl + "collections/majice", currentUrl);
+		webDriver.navigate().back();
+		Thread.sleep(5000);
+		
+		WebElement JakneISakoi = webDriver.findElement(By.xpath("//*[@id=\"shopify-section-16170889646a137eeb\"]/div/div/div[2]/div/div[3]/a/div[2]/div"));
+		assertEquals("JAKNE I SAKOI", JakneISakoi.getAttribute("innerText"));
+		JakneISakoi.click();
+		Thread.sleep(5000);
+		currentUrl = webDriver.getCurrentUrl();
+		assertEquals(baseUrl + "collections/jakne", currentUrl);
+		webDriver.navigate().back();
+		Thread.sleep(5000);
+		
+		WebElement DvodijelniSetovi = webDriver.findElement(By.xpath("//*[@id=\"shopify-section-16170889646a137eeb\"]/div/div/div[2]/div/div[4]/a/div[2]/div"));
+		assertEquals("DVODJELNI SETOVI", DvodijelniSetovi.getAttribute("innerText"));
+		DvodijelniSetovi.click();
+		Thread.sleep(5000);
+		currentUrl = webDriver.getCurrentUrl();
+		assertEquals(baseUrl + "collections/dvodjelni-setovi", currentUrl);
+		webDriver.navigate().back();
+		Thread.sleep(5000);
+		
+		WebElement Dukse = webDriver.findElement(By.xpath("//*[@id=\"shopify-section-16170889646a137eeb\"]/div/div/div[2]/div/div[5]/a/div[2]/div"));
+		assertEquals("DUKSE", Dukse.getAttribute("innerText"));
+		Dukse.click();
+		Thread.sleep(5000);
+		currentUrl = webDriver.getCurrentUrl();
+		assertEquals(baseUrl + "collections/dukse", currentUrl);
+		webDriver.navigate().back();
+		Thread.sleep(5000);
+		
+		WebElement Dzemperi = webDriver.findElement(By.xpath("//*[@id=\"shopify-section-16170889646a137eeb\"]/div/div/div[2]/div/div[6]/a/div[2]/div"));
+		assertEquals("DŽEMPERI I KARDIGANI", Dzemperi.getAttribute("innerText"));
+		Dzemperi.click();
+		Thread.sleep(5000);
+		currentUrl = webDriver.getCurrentUrl();
+		assertEquals(baseUrl + "collections/d-emperi", currentUrl);
+	}
 
 }

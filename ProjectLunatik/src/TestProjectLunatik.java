@@ -1,11 +1,13 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -161,6 +163,40 @@ class TestProjectLunatik {
 		Thread.sleep(5000);
 		currentUrl = webDriver.getCurrentUrl();
 		assertEquals(baseUrl + "collections/d-emperi", currentUrl);
+	}
+	
+	@Test
+	void testSearch() throws InterruptedException {
+		webDriver.get(baseUrl);
+		
+		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+		
+		WebElement SearchButton = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[1]/div[1]/div/a")));
+		
+		SearchButton.click();
+		WebElement SearchInput = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.name("q")));
+		SearchInput.sendKeys("majica");
+		WebElement SearchSubmit = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"SearchModal\"]/div/div/div/form/button")));
+		SearchSubmit.click();
+		
+		WebElement SearchResult = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"MainContent\"]/div/div[1]/div/div[1]")));
+		List<WebElement> child = SearchResult.findElements(By.xpath(".//*"));
+		assertTrue(child.size()>1);
+		
+		SearchButton = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div/header/div/div[1]/div[1]/div/a")));
+		SearchButton.click();
+		SearchInput = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.name("q")));
+		SearchInput.sendKeys("aass" + Keys.ENTER);
+		SearchResult = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"MainContent\"]/div/div[1]/div/div[1]")));
+		child = SearchResult.findElements(By.xpath(".//*"));
+		assertFalse(child.size()>1);
 	}
 
 }

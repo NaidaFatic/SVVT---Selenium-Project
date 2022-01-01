@@ -198,5 +198,128 @@ class TestProjectLunatik {
 		child = SearchResult.findElements(By.xpath(".//*"));
 		assertFalse(child.size()>1);
 	}
+	
+	@Test
+	void testItemSorting() throws InterruptedException {
+		webDriver.get(baseUrl);
+		
+		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+		
+		WebElement posljednjeDodano = wait
+				.until(ExpectedConditions
+						.visibilityOfElementLocated(By
+								.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[2]/ul/li[2]/a")));
+		posljednjeDodano.click();
+		
+		Select sortSelect = new Select(
+				wait
+				.until(ExpectedConditions
+						.visibilityOfElementLocated(By
+								.xpath("//*[@id=\"SortBy\"]")))
+				);
+		
+		WebElement Items = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"CollectionAjaxContent\"]/div[1]")));
+		List<WebElement> childs1 = Items.findElements(By.xpath(".//*"));
+		
+		sortSelect.selectByValue("best-selling");
+		
+		Items = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"CollectionAjaxContent\"]/div[1]")));
+		List<WebElement> childs2 = Items.findElements(By.xpath(".//*"));
+		
+		assertNotEquals(childs1, childs2);
+		childs1 = new ArrayList<>(childs2);
+		
+		sortSelect = new Select(
+				wait
+				.until(ExpectedConditions
+						.visibilityOfElementLocated(By
+								.xpath("//*[@id=\"SortBy\"]")))
+				);
+		
+		sortSelect.selectByValue("title-ascending");
+		
+		Items = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"CollectionAjaxContent\"]/div[1]")));
+		childs2 = Items.findElements(By.xpath(".//*"));
+		assertNotEquals(childs1, childs2);
+		childs1 = new ArrayList<>(childs2);
+		
+		sortSelect = new Select(
+				wait
+				.until(ExpectedConditions
+						.visibilityOfElementLocated(By
+								.xpath("//*[@id=\"SortBy\"]")))
+				);
+		
+		sortSelect.selectByValue("title-descending");
+		
+		Items = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"CollectionAjaxContent\"]/div[1]")));
+		childs2 = Items.findElements(By.xpath(".//*"));
+		assertNotEquals(childs1, childs2);
+		childs1 = new ArrayList<>(childs2);
+		
+		sortSelect = new Select(
+				wait
+				.until(ExpectedConditions
+						.visibilityOfElementLocated(By
+								.xpath("//*[@id=\"SortBy\"]")))
+				);
+		
+		sortSelect.selectByValue("price-ascending");
+		
+		Items = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"CollectionAjaxContent\"]/div[1]")));
+		childs2 = Items.findElements(By.xpath(".//*"));
+		assertNotEquals(childs1, childs2);
+		childs1 = new ArrayList<>(childs2);
+		
+		sortSelect = new Select(
+				wait
+				.until(ExpectedConditions
+						.visibilityOfElementLocated(By
+								.xpath("//*[@id=\"SortBy\"]")))
+				);
+		
+		sortSelect.selectByValue("price-descending");
+		
+		Items = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"CollectionAjaxContent\"]/div[1]")));
+		childs2 = Items.findElements(By.xpath(".//*"));
+		assertNotEquals(childs1, childs2);
+		childs1 = new ArrayList<>(childs2);
+		
+		sortSelect = new Select(
+				wait
+				.until(ExpectedConditions
+						.visibilityOfElementLocated(By
+								.xpath("//*[@id=\"SortBy\"]")))
+				);
+		
+		sortSelect.selectByValue("created-ascending");
+		
+		Items = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"CollectionAjaxContent\"]/div[1]")));
+		childs2 = Items.findElements(By.xpath(".//*"));
+		assertNotEquals(childs1, childs2);
+		childs1 = new ArrayList<>(childs2);
+		
+		sortSelect = new Select(
+				wait
+				.until(ExpectedConditions
+						.visibilityOfElementLocated(By
+								.xpath("//*[@id=\"SortBy\"]")))
+				);
+		
+		sortSelect.selectByValue("created-descending");
+		
+		Items = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"CollectionAjaxContent\"]/div[1]")));
+		childs2 = Items.findElements(By.xpath(".//*"));
+		assertNotEquals(childs1, childs2);
+		childs1 = new ArrayList<>(childs2);
+	}
 
 }

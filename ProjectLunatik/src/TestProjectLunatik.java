@@ -1,20 +1,27 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.MethodOrderer.OrderAnnotation;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+@TestMethodOrder(OrderAnnotation.class)
 class TestProjectLunatik {
 	private static WebDriver webDriver;
 	private static String baseUrl;
@@ -32,73 +39,75 @@ class TestProjectLunatik {
 		webDriver.close();
 	}
 
-	@Test
+	/*@Test
+	@Order(1)
 	void testHomePage() throws InterruptedException {
 		webDriver.get(baseUrl);
-		
+
 		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofMillis(3));
-		
+
 		String title = webDriver.getTitle();
 		assertEquals("Lunatik - Wear what you love", title);
-		
+
 		WebElement pocetna = webDriver.findElement(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[2]/ul/li[1]/a"));
 		assertEquals("Početna", pocetna.getText());
-		
+
 		pocetna.click();
 		Thread.sleep(5000);
 		String urlPocetna = webDriver.getCurrentUrl();
 		assertEquals(baseUrl, urlPocetna);
-		
+
 		WebElement posljednjeDodano = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[2]/ul/li[2]/a")));
 		assertEquals("Posljednje dodano", posljednjeDodano.getText());
-		
+
 		posljednjeDodano.click();
 		Thread.sleep(5000);
 		String urlPosljednjeDodano = webDriver.getCurrentUrl();
 		assertEquals(baseUrl+"collections/nova-kolekcija", urlPosljednjeDodano);
-		
-		WebElement sveNaSnizenju = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div/header/div/div[2]/ul/li[3]/a")));
+
+		WebElement sveNaSnizenju = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[2]/div/div[1]/div[2]/div[1]/div[2]/header/div/div[2]/ul/li[3]/a")));
 		assertEquals("Sve na sniženju", sveNaSnizenju.getText());
-		
+
 		sveNaSnizenju.click();
 		Thread.sleep(5000);
 		String urlsveNaSnizenju = webDriver.getCurrentUrl();
 		assertEquals(baseUrl+"collections/snizenje", urlsveNaSnizenju);
-		
+
 		WebElement anime = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div/header/div/div[2]/ul/li[4]/a")));
 		assertEquals("Anime", anime.getText());
-		
+
 		anime.click();
 		Thread.sleep(5000);
 		String urlAnime = webDriver.getCurrentUrl();
 		assertEquals(baseUrl+"collections/anime", urlAnime);
-		
+
 		WebElement zene = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div/header/div/div[2]/ul/li[5]/a")));
 		assertEquals("Žene", zene.getText());
-		
+
 		zene.click();
 		Thread.sleep(5000);
 		String urlZene = webDriver.getCurrentUrl();
 		assertEquals(baseUrl+"#", urlZene);
-		
+
 		WebElement muskarci =  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[2]/ul/li[6]/a")));
 		assertEquals("Muškarci", muskarci.getText());
-		
+
 		muskarci.click();
 		Thread.sleep(5000);
 		String urlMuskarci = webDriver.getCurrentUrl();
 		assertEquals(baseUrl+"#", urlMuskarci);
-		
-		WebElement wishlist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[2]/ul/li[7]/a")));
+
+		WebElement wishlist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[2]/div/div[1]/div[2]/div[1]/div[2]/header/div/div[2]/ul/li[7]/a")));
 		assertEquals("Wishlist ❤️", wishlist.getText());
-		
+
 		wishlist.click();
 		Thread.sleep(5000);
 		String urlWishlist = webDriver.getCurrentUrl();
 		assertEquals(baseUrl+"pages/wishlist-1", urlWishlist);
-	}
+	}*/
 	
-	@Test
+	/*@Test
+	@Order(2)
 	void testCollectionsOnHomepage() throws InterruptedException {
 		webDriver.get(baseUrl);
 		
@@ -163,16 +172,17 @@ class TestProjectLunatik {
 		Thread.sleep(5000);
 		currentUrl = webDriver.getCurrentUrl();
 		assertEquals(baseUrl + "collections/d-emperi", currentUrl);
-	}
+	}*/
 	
-	@Test
+	/*@Test
+	@Order(3)
 	void testSearch() throws InterruptedException {
 		webDriver.get(baseUrl);
 		
-		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofMillis(5000));
 		
 		WebElement SearchButton = wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[1]/div[1]/div/a")));
+				.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[2]/div/div[1]/div[2]/div[1]/div[2]/header/div/div[1]/div[1]/div/a")));
 		
 		SearchButton.click();
 		WebElement SearchInput = wait.until(ExpectedConditions
@@ -200,10 +210,11 @@ class TestProjectLunatik {
 	}
 	
 	@Test
+	@Order(4)
 	void testItemSorting() throws InterruptedException {
 		webDriver.get(baseUrl);
 		
-		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
 		
 		WebElement posljednjeDodano = wait
 				.until(ExpectedConditions
@@ -320,6 +331,109 @@ class TestProjectLunatik {
 		childs2 = Items.findElements(By.xpath(".//*"));
 		assertNotEquals(childs1, childs2);
 		childs1 = new ArrayList<>(childs2);
-	}
+	}*/
+	
+	@Test
+	void itemTest() throws InterruptedException {
+		webDriver.get(baseUrl);
+		
+		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(5));
+		
+		WebElement muskarci = webDriver.findElement(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[2]/ul/li[6]/a"));
 
+		Actions action = new Actions(webDriver);
+		//Performing the mouse hover action on the target element.
+		action.moveToElement(muskarci).perform();
+		
+		WebElement nakit = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div/header/div/div[2]/ul/li[6]/ul/li[5]/a")));
+		action.moveToElement(nakit).perform();
+		
+		
+		WebElement prstenje = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[2]/ul/li[6]/ul/li[5]/ul/li[2]/a")));
+		prstenje.click();
+		
+		Thread.sleep(3000);
+		WebElement naziv = webDriver.findElement(By.xpath("/html/body/div[2]/div[2]/div/main/div[1]/div/header/h1"));
+		
+		assertEquals("MUŠKO PRSTENJE", naziv.getText());
+		
+		WebElement prsten = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"CollectionAjaxContent\"]/div/div[1]/div/a")));
+		
+		WebElement cijena = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"CollectionAjaxContent\"]/div/div[1]/div/a/div[2]/div[3]/span")));
+		
+		assertEquals("15,95 KM", cijena.getText());
+		
+		prsten.click();
+		
+		WebElement cijena2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("product__price")));	
+		assertEquals("15,95 KM", cijena2.getText());
+		
+		WebElement dodajUKosaru = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("add")));
+		dodajUKosaru.click();
+		Thread.sleep(5000);
+		
+		WebElement kosaraIkona = webDriver.findElement(By.className("cart-link__count"));
+		assertEquals("1", kosaraIkona.getText());
+		
+		WebElement zatvoriKorpu = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("drawer__close-button")));
+		zatvoriKorpu.click();
+		
+		WebElement dodajUWhishlistu = webDriver.findElement(By.xpath("//*[@id=\"ZooomyList\"]"));
+		dodajUWhishlistu.click();
+		Thread.sleep(2000);
+		
+		WebElement ukloniIzWhishliste = webDriver.findElement(By.xpath("//*[@id=\"ZooomyList\"]/label/p"));
+		assertEquals("Ukloni iz Wishlist", ukloniIzWhishliste.getText());
+		
+		WebElement goBack = webDriver.findElement(By.xpath("//*[@id=\"MainContent\"]/div[4]/a"));
+		goBack.click();
+		
+		naziv = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[2]/div/main/div[1]/div/header/h1")));
+		assertEquals("MUŠKO PRSTENJE", naziv.getText());
+	}
+	
+	/*@Test
+	void recenzija() throws InterruptedException {
+		webDriver.get(baseUrl+"collections/musko-prstenje/products/set-golden-black-maxi-prstenja");
+		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(20));
+		
+		WebElement dodajRecenziju = webDriver.findElement(By.className("jdgm-write-rev-link"));
+		dodajRecenziju.click();
+		Thread.sleep(2000);
+		
+		Select ime = new Select (wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("reviewer_name_format"))));
+		ime.selectByValue("anonymous");
+		
+		WebElement email = webDriver.findElement(By.name("reviewer_email"));
+		email.sendKeys("example@example.com");
+		
+		WebElement star = webDriver.findElement(By.xpath("//*[@id=\"judgeme_product_reviews\"]/div/div[1]/div[6]/form/div[3]/span/a[5]"));
+		star.click();
+		
+		WebElement naslov = webDriver.findElement(By.name("review_title"));
+		naslov.sendKeys("Nice");
+		
+		WebElement pregled = webDriver.findElement(By.name("review_body"));
+		pregled.sendKeys("Looks cool");
+		
+		Thread.sleep(2000);
+		
+		WebElement posalji = webDriver.findElement(By.xpath("//*[@id=\"judgeme_product_reviews\"]/div/div[1]/div[6]/form/input"));
+		posalji.click();
+		
+		Thread.sleep(2000);
+		WebElement error = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[2]/div/main/div[1]/div/div/div/div[3]/div/div[1]/div[6]/form/div[1]/div")));
+		assertEquals("Ovo polje je obavezno.",error.getText());
+		
+		Thread.sleep(5000);
+		WebElement imeInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("reviewer_name")));
+		imeInput.sendKeys("N.F");
+		Thread.sleep(2000);
+		
+		posalji.click();
+		Thread.sleep(5000);
+	}*/
+	
 }

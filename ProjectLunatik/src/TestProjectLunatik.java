@@ -333,7 +333,7 @@ class TestProjectLunatik {
 		childs1 = new ArrayList<>(childs2);
 	}*/
 	
-	@Test
+	/*@Test
 	void itemTest() throws InterruptedException {
 		webDriver.get(baseUrl);
 		
@@ -435,7 +435,6 @@ class TestProjectLunatik {
 		posalji.click();
 		Thread.sleep(5000);
 	}*/
-	
 	/*
 	@Test
 	void successfullRegistration() throws InterruptedException {
@@ -584,6 +583,60 @@ class TestProjectLunatik {
 		values = errorPrompt.findElements(By.tagName("li"));
 		Thread.sleep(5000);
 		assertEquals("Email contains an invalid domain name.", values.get(0).getText());
-	}
-	*/
+	}*/
+	
+	/*@Test 
+	void loginTestFail() throws InterruptedException {
+		webDriver.get(baseUrl);
+		
+		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(500));
+		
+		WebElement loginButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[1]/div[3]/div/div/a[1]")));
+		loginButton.click();
+		
+		WebElement email  = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CustomerEmail")));
+		
+		email.sendKeys("someemail@gmail.coma");
+		
+		WebElement password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CustomerPassword")));
+		
+		password.sendKeys("dummypassword");
+		
+		Thread.sleep(2000);
+		WebElement login = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[2]/div/main/div/div[1]/div/div[2]/form/p[1]/input")));
+		login.click();		
+		Thread.sleep(8000);
+		
+		WebElement pogresnoText = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"customer_login\"]/div[1]/ul/li")));
+		
+		assertEquals("E-Pošta ili lozinka nisu ispravni.", pogresnoText.getText());
+		
+		//assertEquals("https://lunatik.io/account", webDriver.getCurrentUrl());
+	}*/
+	
+	/*@Test 
+	void loginTest() throws InterruptedException {
+		webDriver.get(baseUrl);
+		
+		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(500));
+		
+		WebElement loginButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[1]/div[3]/div/div/a[1]")));
+		loginButton.click();
+		
+		WebElement email  = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CustomerEmail")));
+		
+		email.sendKeys("dadirel637@veb65.com");
+		
+		WebElement password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CustomerPassword")));
+		
+		password.sendKeys("dummypassword");
+		
+		Thread.sleep(2000);
+		WebElement login = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[2]/div/main/div/div[1]/div/div[2]/form/p[1]/input")));
+		login.click();		
+		Thread.sleep(8000);
+		
+		assertEquals("https://lunatik.io/account", webDriver.getCurrentUrl());
+	}*/
+	
 }

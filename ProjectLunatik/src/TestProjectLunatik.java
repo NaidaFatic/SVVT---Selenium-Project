@@ -436,4 +436,40 @@ class TestProjectLunatik {
 		Thread.sleep(5000);
 	}*/
 	
+	/*
+	@Test
+	void successfullRegistration() throws InterruptedException {
+		webDriver.get(baseUrl);
+		
+		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+		
+		WebElement login = webDriver
+				.findElement(By
+						.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[1]/div[3]/div/div/a[1]"));
+		login.click();
+		WebElement register = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"customer_register_link\"]")));
+		register.click();
+		
+		WebElement name = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("customer[first_name]")));
+		WebElement lastName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("customer[last_name]")));
+		WebElement mail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("customer[email]")));
+		WebElement password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("customer[password]")));
+		
+		name.sendKeys("ime");
+		lastName.sendKeys("prezime");
+		mail.sendKeys("dadirel637@veb65.com");
+		password.sendKeys("dummypassword");
+		
+		WebElement registerButton = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"create_customer\"]/p/input")));
+		registerButton.click();
+		
+		Thread.sleep(5000);
+		String currentUrl = webDriver.getCurrentUrl();
+		
+		assertEquals("https://lunatik.io/", currentUrl);
+	}
+	*/
+	
 }

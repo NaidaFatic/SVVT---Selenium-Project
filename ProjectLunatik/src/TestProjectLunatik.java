@@ -513,4 +513,77 @@ class TestProjectLunatik {
 		assertEquals("https://lunatik.io/account/login?return_url=%2Faccount", webDriver.getCurrentUrl());
 	}
 	*/
+	/*
+	@Test
+	void registrationFormValidationTest() throws InterruptedException {
+		webDriver.get(baseUrl);
+		
+		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+		
+		WebElement login = webDriver
+				.findElement(By
+						.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[1]/div[3]/div/div/a[1]"));
+		login.click();
+		WebElement register = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"customer_register_link\"]")));
+		register.click();
+		
+		WebElement name = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("customer[first_name]")));
+		WebElement lastName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("customer[last_name]")));
+		WebElement mail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("customer[email]")));
+		WebElement password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("customer[password]")));
+		
+		name.sendKeys("ime");
+		lastName.sendKeys("prezime");
+		
+		WebElement registerButton = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"create_customer\"]/p/input")));
+		registerButton.click();
+		
+		WebElement errorPrompt = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"create_customer\"]/div/ul")));
+		List<WebElement> values = errorPrompt.findElements(By.tagName("li"));
+		
+		assertEquals("Lozinka ne može biti prazno.", values.get(0).getText());
+		assertEquals("Email ne može biti prazno.", values.get(1).getText());
+		
+		password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("customer[password]")));
+		password.sendKeys("dummypassword");
+		register = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"create_customer\"]/p/input")));
+		register.click();
+		Thread.sleep(5000);
+		errorPrompt = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"create_customer\"]/div/ul")));
+		values = errorPrompt.findElements(By.tagName("li"));
+		Thread.sleep(5000);
+		assertEquals("Email ne može biti prazno.", values.get(0).getText());
+		
+		mail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("customer[email]")));
+		mail.sendKeys("someemail@gmail.com");
+		register = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"create_customer\"]/p/input")));
+		register.click();
+		Thread.sleep(5000);
+		errorPrompt = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"create_customer\"]/div/ul")));
+		values = errorPrompt.findElements(By.tagName("li"));
+		Thread.sleep(5000);
+		assertEquals("Lozinka ne može biti prazno.", values.get(0).getText());
+		
+		mail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("customer[email]")));
+		password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("customer[password]")));
+		mail.sendKeys("someemail@gmail.coma");
+		password.sendKeys("dummypassword");
+		register = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"create_customer\"]/p/input")));
+		register.click();
+		Thread.sleep(5000);
+		errorPrompt = wait
+				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"create_customer\"]/div/ul")));
+		values = errorPrompt.findElements(By.tagName("li"));
+		Thread.sleep(5000);
+		assertEquals("Email contains an invalid domain name.", values.get(0).getText());
+	}
+	*/
 }

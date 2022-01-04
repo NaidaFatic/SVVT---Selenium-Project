@@ -638,5 +638,51 @@ class TestProjectLunatik {
 		
 		assertEquals("https://lunatik.io/account", webDriver.getCurrentUrl());
 	}*/
+
+	@Test 
+	void wishlist() throws InterruptedException {
+		webDriver.get(baseUrl);
+		
+		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+		
+		WebElement anime = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#shopify-section-header > div:nth-child(3) >"
+				+ " div.header-wrapper > div.site-header-sticky > header > div > div.text-center > ul > li:nth-child(4) > a")));
+		anime.click();
+		
+		WebElement next = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"CollectionAjaxContent\"]/div[2]/span[4]/a")));
+		next.click();
+		
+		Thread.sleep(2000);
+		
+		JavascriptExecutor jse = (JavascriptExecutor)webDriver;
+		jse.executeScript("window.scrollBy(0,250)");
+		WebElement item = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"CollectionAjaxContent\"]/div[1]/div[7]/div/a/div[1]")));
+		item.click();	
+		
+		Thread.sleep(2000);
+		WebElement add = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("zooomypwishmsg")));
+		add.click();
+		Thread.sleep(2000);
+		
+		WebElement wishlist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("Wishlist")));
+		wishlist.click();
+		Thread.sleep(2000);
+		
+		WebElement price2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("zprice")));
+		Thread.sleep(2000);
+		
+		assertEquals("29.95", price2.getText());
+		
+		/*Select numberOfItems = new Select(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"zqtyn-6621271064611\"]"))));
+		numberOfItems.selectByIndex(6);*/
+		
+		WebElement kupiOdmah = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("addcartbtn")));
+		kupiOdmah.click();
+		
+		WebElement cart = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("cart-link__count")));
+
+		assertEquals("3",cart.getText());
+	}
+	
 	
 }

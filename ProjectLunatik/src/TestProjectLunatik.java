@@ -751,5 +751,56 @@ class TestProjectLunatik {
 				+ "Bosnia & Herzegovina", addedAddress.getText());
 	}
 	*/
-	
+	/*
+	@Test
+	void editAddressTest() throws InterruptedException {
+		webDriver.get(baseUrl);
+		
+		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+		
+		WebElement loginButton = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By
+						.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[1]/div[3]/div/div/a[1]")));
+		loginButton.click();
+		
+		WebElement email  = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CustomerEmail")));
+		
+		email.sendKeys("dadirel637@veb65.com");
+		
+		WebElement password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CustomerPassword")));
+		
+		password.sendKeys("dummypassword");
+		
+		Thread.sleep(2000);
+		WebElement login = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[2]/div/main/div/div[1]/div/div[2]/form/p[1]/input")));
+		login.click();		
+		
+		WebElement addresses = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"MainContent\"]/div/div[1]/div[2]/p[3]/a")));
+		addresses.click();
+		
+		String address1 = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"MainContent\"]/div/div[1]/div/p[2]"))).getText();
+
+		WebElement editAdress = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"MainContent\"]/div/div[1]/div/p[3]/button[1]")));
+		editAdress.click();
+		
+		Thread.sleep(5000);
+		
+		WebElement address = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"AddressAddress1_6597707628579\"]")));
+		address.sendKeys(Keys.BACK_SPACE+"12");
+
+		WebElement submitButton = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"address_form_6597707628579\"]/input[7]")));
+		submitButton.click();
+		
+		Thread.sleep(5000);
+		WebElement address2 = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"MainContent\"]/div/div[1]/div/p[1]")));
+		
+		assertNotEquals(address1, address2.getText());
+	}
+	*/
 }

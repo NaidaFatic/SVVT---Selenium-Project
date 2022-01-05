@@ -638,7 +638,7 @@ class TestProjectLunatik {
 		
 		assertEquals("https://lunatik.io/account", webDriver.getCurrentUrl());
 	}*/
-
+	
 	@Test 
 	void wishlist() throws InterruptedException {
 		webDriver.get(baseUrl);
@@ -683,6 +683,73 @@ class TestProjectLunatik {
 
 		assertEquals("3",cart.getText());
 	}
-	
+	/*
+	@Test
+	void addNewAddressTest() throws InterruptedException {
+		webDriver.get(baseUrl);
+		
+		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
+		
+		WebElement loginButton = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By
+						.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[1]/div[3]/div/div/a[1]")));
+		loginButton.click();
+		
+		WebElement email  = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CustomerEmail")));
+		
+		email.sendKeys("dadirel637@veb65.com");
+		
+		WebElement password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("CustomerPassword")));
+		
+		password.sendKeys("dummypassword");
+		
+		Thread.sleep(2000);
+		WebElement login = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[2]/div/main/div/div[1]/div/div[2]/form/p[1]/input")));
+		login.click();		
+		
+		WebElement addresses = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"MainContent\"]/div/div[1]/div[2]/p[2]/a")));
+		addresses.click();
+		
+		WebElement addAddress = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"MainContent\"]/div/header/a")));
+		addAddress.click();
+		
+		WebElement firstName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("address[first_name]")));
+		WebElement lastName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("address[last_name]")));
+		WebElement company = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("address[company]")));
+		WebElement address = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("address[address1]")));
+		WebElement city = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("address[city]")));
+		Select kanton = new Select(wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("address[country]"))));
+		WebElement zip = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("address[zip]")));
+		WebElement phone = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("address[phone]")));
+		WebElement addressDefault = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("address[default]")));
+		
+		firstName.sendKeys("Ime");
+		lastName.sendKeys("prezime");
+		company.sendKeys("IBU");
+		address.sendKeys("Dummy Address 18");
+		city.sendKeys("Sarajevo");
+		kanton.selectByIndex(0);
+		zip.sendKeys("71000");
+		phone.sendKeys("061061061");
+		addressDefault.click();
+
+		WebElement submitButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"address_form_new\"]/input[6]")));
+		
+		Thread.sleep(5000);
+		
+		submitButton.click();
+		WebElement addedAddress = wait.until(ExpectedConditions
+				.visibilityOfElementLocated(By.xpath("//*[@id=\"MainContent\"]/div/div[1]/div/p[2]")));
+		
+		assertEquals("Ime prezime\n"
+				+ "IBU\n"
+				+ "Dummy Address 18\n"
+				+ "71000 Sarajevo\n"
+				+ "Bosnia & Herzegovina", addedAddress.getText());
+	}
+	*/
 	
 }

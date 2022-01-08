@@ -55,7 +55,7 @@ class TestProjectLunatik {
 //		String title = webDriver.getTitle();
 //		assertEquals("Lunatik - Wear what you love", title);
 //
-//		WebElement pocetna = webDriver.findElement(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[2]/ul/li[1]/a"));
+//		WebElement pocetna = webDriver.findElement(By.linkText("Početna"));
 //		assertEquals("Početna", pocetna.getText());
 //
 //		pocetna.click();
@@ -63,7 +63,7 @@ class TestProjectLunatik {
 //		String urlPocetna = webDriver.getCurrentUrl();
 //		assertEquals(baseUrl, urlPocetna);
 //
-//		WebElement posljednjeDodano = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[2]/ul/li[2]/a")));
+//		WebElement posljednjeDodano = wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Posljednje dodano")));
 //		assertEquals("Posljednje dodano", posljednjeDodano.getText());
 //
 //		posljednjeDodano.click();
@@ -103,7 +103,7 @@ class TestProjectLunatik {
 //		String urlMuskarci = webDriver.getCurrentUrl();
 //		assertEquals(baseUrl+"#", urlMuskarci);
 //
-//		WebElement wishlist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[2]/div/div[1]/div[2]/div[1]/div[2]/header/div/div[2]/ul/li[7]/a")));
+//		WebElement wishlist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Wishlist ❤️")));
 //		assertEquals("Wishlist ❤️", wishlist.getText());
 //
 //		wishlist.click();
@@ -183,7 +183,7 @@ class TestProjectLunatik {
 //	void testSearch() throws InterruptedException {
 //		
 //		WebElement SearchButton = wait.until(ExpectedConditions
-//				.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[2]/div/div[1]/div[2]/div[1]/div[2]/header/div/div[1]/div[1]/div/a")));
+//				.visibilityOfElementLocated(By.cssSelector(".site-nav__link.site-nav__link--icon.js-modal-open-search-modal.js-no-transition")));
 //		
 //		SearchButton.click();
 //		WebElement SearchInput = wait.until(ExpectedConditions
@@ -199,7 +199,7 @@ class TestProjectLunatik {
 //		assertTrue(child.size()>1);
 //		
 //		SearchButton = wait.until(ExpectedConditions
-//				.visibilityOfElementLocated(By.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div/header/div/div[1]/div[1]/div/a")));
+//				.visibilityOfElementLocated(By.cssSelector(".site-nav__link.site-nav__link--icon.js-modal-open-search-modal.js-no-transition")));
 //		SearchButton.click();
 //		SearchInput = wait.until(ExpectedConditions
 //				.visibilityOfElementLocated(By.name("q")));
@@ -390,79 +390,89 @@ class TestProjectLunatik {
 //		assertEquals("MUŠKO PRSTENJE", naziv.getText());
 //	}
 //	
-	/*
-	@Order(6)
-	@Test
-	void recenzija() throws InterruptedException {
-	
-		webDriver.get(baseUrl+"collections/musko-prstenje/products/set-golden-black-maxi-prstenja");
-		
-		WebElement dodajRecenziju = webDriver.findElement(By.className("jdgm-write-rev-link"));
-		dodajRecenziju.click();
-		Thread.sleep(2000);
-		
-		Select ime = new Select (wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("reviewer_name_format"))));
-		ime.selectByValue("anonymous");
-		
-		WebElement email = webDriver.findElement(By.name("reviewer_email"));
-		email.sendKeys("example@example.com");
-		
-		WebElement star = webDriver.findElement(By.xpath("//*[@id=\"judgeme_product_reviews\"]/div/div[1]/div[6]/form/div[3]/span/a[5]"));
-		star.click();
-		
-		WebElement naslov = webDriver.findElement(By.name("review_title"));
-		naslov.sendKeys("Nice");
-		
-		WebElement pregled = webDriver.findElement(By.name("review_body"));
-		pregled.sendKeys("Looks cool");
-		
-		Thread.sleep(2000);
-		
-		WebElement posalji = webDriver.findElement(By.xpath("//*[@id=\"judgeme_product_reviews\"]/div/div[1]/div[6]/form/input"));
-		posalji.click();
-		
-		Thread.sleep(2000);
-		WebElement error = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/div[2]/div[2]/div/main/div[1]/div/div/div/div[3]/div/div[1]/div[6]/form/div[1]/div")));
-		assertEquals("Ovo polje je obavezno.",error.getText());
-		
-		Thread.sleep(5000);
-		WebElement imeInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("reviewer_name")));
-		imeInput.sendKeys("N.F");
-		Thread.sleep(2000);
-		
-		posalji.click();
-		Thread.sleep(5000);
-	}*/
+//	
+//	@Order(6)
+//	@Test
+//	void recenzija() throws InterruptedException {
+//	
+//		webDriver.get(baseUrl+"collections/musko-prstenje/products/set-golden-black-maxi-prstenja");
+//		
+//		WebElement dodajRecenziju = webDriver.findElement(By.className("jdgm-write-rev-link"));
+//		dodajRecenziju.click();
+//		Thread.sleep(2000);
+//		
+//		Select ime = new Select (wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("reviewer_name_format"))));
+//		ime.selectByValue("anonymous");
+//		
+//		WebElement email = webDriver.findElement(By.name("reviewer_email"));
+//		email.sendKeys("example@example.com");
+//		
+//		WebElement star = webDriver.findElement(By.xpath("//*[@id=\"judgeme_product_reviews\"]/div/div[1]/div[7]/form/div[3]/span/a[5]"));
+//		star.click();
+//		
+//		WebElement naslov = webDriver.findElement(By.name("review_title"));
+//		naslov.sendKeys("Nice");
+//		
+//		WebElement pregled = webDriver.findElement(By.name("review_body"));
+//		pregled.sendKeys("Looks cool");
+//		
+//		Thread.sleep(2000);
+//		
+//		WebElement posalji = webDriver.findElement(By.xpath("//*[@id=\"judgeme_product_reviews\"]/div/div[1]/div[7]/form/input"));
+//		posalji.click();
+//		
+//		Thread.sleep(2000);
+//		WebElement error = wait.until(ExpectedConditions
+//				.visibilityOfElementLocated(By
+//						.xpath("/html/body/div[2]/div[2]/div/main/div[1]/div/div/div/div[3]/div/div[1]/div[7]/form/div[1]/div")));
+//		assertEquals("Ovo polje je obavezno.",error.getText());
+//		
+//		Thread.sleep(5000);
+//		WebElement imeInput = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("reviewer_name")));
+//		imeInput.sendKeys("N.F");
+//		Thread.sleep(2000);
+//		
+//		posalji.click();
+//		Thread.sleep(5000);
+//	}
+//	
 	/*
 	@Order(7)
 	@Test
 	void successfullRegistration() throws InterruptedException {
-		
-		WebElement login = webDriver
-				.findElement(By
-						.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[1]/div[3]/div/div/a[1]"));
+
+		int leftLimit = 97; // letter 'a'
+		int rightLimit = 122; // letter 'z'
+		int targetStringLength = 10;
+		Random random = new Random();
+
+		String generatedString = random.ints(leftLimit, rightLimit + 1).limit(targetStringLength)
+				.collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append).toString();
+
+		WebElement login = webDriver.findElement(By.xpath(
+				"//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div[2]/header/div/div[1]/div[3]/div/div/a[1]"));
 		login.click();
 		WebElement register = wait
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"customer_register_link\"]")));
 		register.click();
-		
+
 		WebElement name = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("customer[first_name]")));
 		WebElement lastName = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("customer[last_name]")));
 		WebElement mail = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("customer[email]")));
 		WebElement password = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("customer[password]")));
-		
+
 		name.sendKeys("ime");
 		lastName.sendKeys("prezime");
-		mail.sendKeys("dadirel637@veb65.com");
+		mail.sendKeys(generatedString + "@veb65.com");
 		password.sendKeys("dummypassword");
-		
+
 		WebElement registerButton = wait
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"create_customer\"]/p/input")));
 		registerButton.click();
-		
+
 		Thread.sleep(5000);
 		String currentUrl = webDriver.getCurrentUrl();
-		
+
 		assertEquals("https://lunatik.io/", currentUrl);
 	}
 //	*/
@@ -470,7 +480,6 @@ class TestProjectLunatik {
 //	@Order(8)
 //	@Test
 //	void mailAlreadyInUseTest() throws InterruptedException {
-//		webDriver.get(baseUrl);
 //		
 //		WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(30));
 //		
@@ -504,9 +513,10 @@ class TestProjectLunatik {
 //		wait
 //		.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"create_customer\"]/div/ul/li/a"))).click();
 //		
+//		Thread.sleep(5000);
 //		assertEquals("https://lunatik.io/account/register", webDriver.getCurrentUrl());
 //	}
-//	
+//
 //	@Order(9)
 //	@Test
 //	void registrationFormValidationTest() throws InterruptedException {

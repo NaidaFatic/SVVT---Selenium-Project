@@ -643,17 +643,24 @@ class TestProjectLunatik {
 //				+ " div.header-wrapper > div.site-header-sticky > header > div > div.text-center > ul > li:nth-child(4) > a")));
 //		anime.click();
 //		
-//		WebElement next = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"CollectionAjaxContent\"]/div[2]/span[4]/a")));
+//		WebElement next = wait.until(ExpectedConditions.visibilityOfElementLocated(By
+//				.xpath("//*[@id=\"CollectionAjaxContent\"]/div[2]/span[4]/a")));
 //		next.click();
 //		
 //		Thread.sleep(2000);
 //		
 //		JavascriptExecutor jse = (JavascriptExecutor)webDriver;
 //		jse.executeScript("window.scrollBy(0,250)");
-//		WebElement item = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"CollectionAjaxContent\"]/div[1]/div[7]/div/a/div[1]")));
+//		WebElement item = wait.until(ExpectedConditions.visibilityOfElementLocated(By
+//				.xpath("//*[@id=\"CollectionAjaxContent\"]/div[1]/div[7]/div/a/div[1]")));
 //		item.click();	
 //		
 //		Thread.sleep(2000);
+//		String itemPrice = wait.until(ExpectedConditions
+//				.visibilityOfElementLocated(By
+//						.xpath("/html/body/div[2]/div[2]/div/main/div[1]/div/div/div/div[1]/div[2]/div/div[1]/div[2]/span[2]"))).getText();
+//		itemPrice = itemPrice.substring(0, itemPrice.length()-3);
+//		String itemPriceNew = itemPrice.replace(",", ".");
 //		WebElement add = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("zooomypwishmsg")));
 //		add.click();
 //		Thread.sleep(2000);
@@ -665,15 +672,16 @@ class TestProjectLunatik {
 //		WebElement price2 = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("zprice")));
 //		Thread.sleep(2000);
 //		
-//		assertEquals("39.95", price2.getText());
+//		assertEquals(itemPriceNew, price2.getText());
 //		
 //		/*Select numberOfItems = new Select(wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"zqtyn-6621271064611\"]"))));
 //		numberOfItems.selectByIndex(6);*/
 //		
 //		WebElement kupiOdmah = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("addcartbtn")));
 //		kupiOdmah.click();
-//		
-//		WebElement cart = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("cart-link__count")));
+//		Thread.sleep(5000);
+//		WebElement cart = webDriver.findElement(By
+//				.xpath("//*[@id=\"shopify-section-header\"]/div[2]/div[1]/div/header/div/div[1]/div[3]/div/div/a[3]/span/span[2]/span"));
 //
 //		assertEquals("1",cart.getText());
 //	}

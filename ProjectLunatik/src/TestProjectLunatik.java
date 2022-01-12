@@ -839,6 +839,51 @@ class TestProjectLunatik {
 //		
 //		assertFalse(addressObrisana);
 //	}
-
-	
+//	
+//	@Order(16)
+//	@Test 
+//	void cartPriceCalculatorTest() throws InterruptedException {
+//		
+//		WebElement posljednjeDodano = wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Posljednje dodano")));
+//		posljednjeDodano.click();
+//		
+//		WebElement item = wait.until(ExpectedConditions.visibilityOfElementLocated(By
+//				.xpath("//*[@id=\"CollectionAjaxContent\"]/div[1]/div[1]/div/a/div[2]/div[1]")));
+//		item.click();
+//		WebElement addToCartBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By
+//				.xpath("/html/body/div[2]/div[2]/div/main/div[1]/div/div/div/div[1]/div[2]/div/form/button")));
+//		addToCartBtn.click();
+//		Thread.sleep(5000);
+//		webDriver.navigate().back();
+//		
+//		item = wait.until(ExpectedConditions.visibilityOfElementLocated(By
+//				.xpath("//*[@id=\"CollectionAjaxContent\"]/div[1]/div[2]/div/a/div[2]/div[1]")));
+//		item.click();	
+//		addToCartBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By
+//				.xpath("/html/body/div[2]/div[2]/div/main/div[1]/div/div/div/div[1]/div[2]/div/form/button")));
+//		addToCartBtn.click();
+//		Thread.sleep(5000);
+//		
+//		String itemPrice1 = wait.until(ExpectedConditions
+//		.visibilityOfElementLocated(By
+//				.xpath("/html/body/div[6]/form/div[2]/div[1]/div[2]/div[1]/div/div[2]/div/div[1]/span[2]/span"))).getText();
+//		itemPrice1 = itemPrice1.substring(0, itemPrice1.length()-3);
+//		String itemPriceNew1 = itemPrice1.replace(",", ".");
+//		
+//		String itemPrice2 = wait.until(ExpectedConditions
+//		.visibilityOfElementLocated(By
+//				.xpath("/html/body/div[6]/form/div[2]/div[1]/div[2]/div[2]/div/div[2]/div/div[1]/span[2]/span"))).getText();
+//		itemPrice2 = itemPrice2.substring(0, itemPrice2.length()-3);
+//		String itemPriceNew2 = itemPrice2.replace(",", ".");
+//		
+//		String totalPrice = wait.until(ExpectedConditions
+//		.visibilityOfElementLocated(By
+//				.xpath("/html/body/div[6]/form/div[2]/div[2]/div[2]/div[2]/span"))).getText();
+//		totalPrice = totalPrice.substring(0, totalPrice.length()-3);
+//		String totalPriceNew = totalPrice.replace(",", ".");
+//		
+//		assertEquals(Double.parseDouble(totalPriceNew), Double.parseDouble(itemPriceNew2)+Double.parseDouble(itemPriceNew1));
+//	}
+//
+//	
 }

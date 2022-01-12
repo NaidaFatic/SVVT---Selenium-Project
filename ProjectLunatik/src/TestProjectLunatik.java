@@ -886,4 +886,86 @@ class TestProjectLunatik {
 //	}
 //
 //	
+//	
+//	@Order(17)
+//	@Test
+//	void CheckoutTest() throws InterruptedException {
+//
+//		WebElement posljednjeDodano = wait
+//				.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("Posljednje dodano")));
+//		posljednjeDodano.click();
+//
+//		WebElement item = wait.until(ExpectedConditions.visibilityOfElementLocated(
+//				By.xpath("//*[@id=\"CollectionAjaxContent\"]/div[1]/div[1]/div/a/div[2]/div[1]")));
+//		item.click();
+//		WebElement addToCartBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(
+//				By.xpath("/html/body/div[2]/div[2]/div/main/div[1]/div/div/div/div[1]/div[2]/div/form/button")));
+//		addToCartBtn.click();
+//		Thread.sleep(5000);
+//		webDriver.navigate().back();
+//
+//		item = wait.until(ExpectedConditions.visibilityOfElementLocated(
+//				By.xpath("//*[@id=\"CollectionAjaxContent\"]/div[1]/div[2]/div/a/div[2]/div[1]")));
+//		item.click();
+//		addToCartBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(
+//				By.xpath("/html/body/div[2]/div[2]/div/main/div[1]/div/div/div/div[1]/div[2]/div/form/button")));
+//		addToCartBtn.click();
+//		Thread.sleep(5000);
+//
+//		WebElement toCheckoutBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("checkout")));
+//		toCheckoutBtn.click();
+//
+//		Thread.sleep(5000);
+//
+//		WebElement email = wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("checkout[email]")));
+//		email.sendKeys("dadirel637@veb65.com");
+//		WebElement firstName = wait.until(
+//				ExpectedConditions.visibilityOfElementLocated(By.name("checkout[shipping_address][first_name]")));
+//		firstName.sendKeys("Dummyname");
+//		WebElement lastName = wait
+//				.until(ExpectedConditions.visibilityOfElementLocated(By.name("checkout[shipping_address][last_name]")));
+//		lastName.sendKeys("Dummysurname");
+//		WebElement address = wait
+//				.until(ExpectedConditions.visibilityOfElementLocated(By.name("checkout[shipping_address][address1]")));
+//		address.sendKeys("DummyAddress");
+//		WebElement zip = wait
+//				.until(ExpectedConditions.visibilityOfElementLocated(By.name("checkout[shipping_address][zip]")));
+//		zip.sendKeys("DummyZip");
+//		WebElement city = wait
+//				.until(ExpectedConditions.visibilityOfElementLocated(By.name("checkout[shipping_address][city]")));
+//		city.sendKeys("Sarajevo");
+//		WebElement phone = wait
+//				.until(ExpectedConditions.visibilityOfElementLocated(By.name("checkout[shipping_address][phone]")));
+//		phone.sendKeys("061061061");
+//
+//		Thread.sleep(5000);
+//
+//		WebElement nextStep = wait
+//				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"continue_button\"]")));
+//		nextStep.click();
+//		WebElement shipping = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+//				"//*[@id=\"checkout_shipping_rate_id_shopify-express20dostava20-20x-express20-20dozvoljeno20otvaranje20paketa-9_00\"]")));
+//		shipping.click();
+//		nextStep = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"continue_button\"]")));
+//		nextStep.click();
+//		nextStep = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"continue_button\"]")));
+//		nextStep.click();
+//		WebElement emailDetails = wait.until(ExpectedConditions.visibilityOfElementLocated(
+//				By.xpath("/html/body/div/div/div/main/div[1]/div/div/div[2]/div[1]/div/div[1]/div[1]/div[2]/bdo")));
+//		WebElement shippingDetails = wait.until(ExpectedConditions.visibilityOfElementLocated(
+//				By.xpath("/html/body/div/div/div/main/div[1]/div/div/div[2]/div[1]/div/div[2]/div[1]/div[2]/address")));
+//		WebElement shippingType = wait.until(ExpectedConditions.visibilityOfElementLocated(
+//				By.xpath("/html/body/div/div/div/main/div[1]/div/div/div[2]/div[1]/div/div[3]/div[1]/div[2]")));
+//		WebElement paymentMethod = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(
+//				"/html/body/div/div/div/main/div[1]/div/div/div[2]/div[1]/div/div[4]/div[1]/div[2]/ul/li/span")));
+//		System.out.println(shippingType.getText());
+//		Thread.sleep(5000);
+//		assertEquals("dadirel637@veb65.com", emailDetails.getText());
+//		assertEquals("Dummyname Dummysurname\n" + "DummyAddress\n" + "DUMMYZIP Sarajevo\n" + "Bosnia & Herzegovina\n"
+//				+ "061061061", shippingDetails.getText());
+//		assertEquals("Express dostava - X-Express - Dozvoljeno otvaranje paketa · KM9.00\n"
+//				+ "Još 1 način dostave dostupan KM6.00", shippingType.getText());
+//		assertEquals("Plaćanje prilikom preuzimanja (COD)", paymentMethod.getText());
+//	}
+
 }
